@@ -1,5 +1,5 @@
 const Nano = require('nano');
-const nano = Nano("https://");
+const nano = Nano(`https://${process.env.NANO_DB}`);
 const commentDB = nano.db.use("comments");
 
 

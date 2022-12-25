@@ -53,12 +53,12 @@ app.post('/comment', async (req, res) => {
 app.get('/comment/:slug', async (req, res) => {
   try {
     const { slug } = req.params;
-    console.log(slug);
     const comments = await commentDB.view('comments', 'slug', {
       limit: 30,
       include_docs: true,
-      startkey: slug,
-      endkey: slug + '\\uffff',
+      startkey: slug + '999999999999',
+      endkey: slug,
+      descending: true
     }).then(({ rows }) => {
       return rows.map(e => e.doc);
     });
